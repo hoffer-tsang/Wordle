@@ -1,0 +1,165 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Not Wordle</title>
+    <link rel="stylesheet" href="NotWordle.css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js" type="text/javascript"></script>
+    <script src="https://kit.fontawesome.com/066792c032.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <h1> This is Not Wordle</h1>
+    <div class="popUpContainer">
+        <div class="extraFunction">
+            <span onclick="hint()" class="hint"> ? </span>
+            &nbsp;
+            &nbsp;
+            <span onclick="popUpFunction()" class="extra"><i class="fa-solid fa-chart-simple"></i></span>
+            &nbsp;
+            &nbsp;
+            <span onclick="popUpSetting()" class="extra"><i class="fa-solid fa-gear"></i></span>
+        </div>
+        <div class="statPopUp" id="statPopUp">
+            <h2> Statistics </h2>
+            <div class="statisticsContainer">
+                <table class="statistics">
+                    <tr>
+                        <th>Game Played</th>
+                        <th>Win Percentage</th>
+                        <th> Current Streak</th>
+                        <th> Least Guess</th>
+                    </tr>
+                    <tr>
+                        <td id="gamePlayed"> 0 </td>
+                        <td id="winPercentage"> 0% </td>
+                        <td id="currentStreak"> 0 </td>
+                        <td id="leastGuess"> 0 </td>
+                    </tr>
+                </table>
+            </div>
+            <div>
+                <h2> Guess Distribution </h2>
+            </div>
+            <div class="scoreTableContainer">
+                <table class="scoreTable">
+                    <tr>
+                        <th>Number of Guess</th>
+                        <th>1</th>
+                        <th>2</th>
+                        <th>3</th>
+                        <th>4</th>
+                        <th>5</th>
+                        <th>6</th>
+                    </tr>
+                    <tr>
+                        <th id="gamePlayed"> Results </th>
+                        <td id="result1"> 0 </td>
+                        <td id="result2"> 0 </td>
+                        <td id="result3"> 0 </td>
+                        <td id="result4"> 0 </td>
+                        <td id="result5"> 0 </td>
+                        <td id="result6"> 0 </td>
+                    </tr>
+                </table>
+            </div>
+            <div>
+                <button onclick="closeStatPopUp()" id="statClose"> Close Window </button>
+            </div>
+        </div>
+        <div class="settingPopUp" id="settingPopUp">
+            <div class="hardModeSwitch">
+                <div> Hard Mode </div>
+                <label class="switch">
+                    <input type="checkbox" onchange="hardModeFunction()"/>
+                    <span class="slider round"></span>
+                </label>
+            </div>
+            <div class="lightModeSwitch">
+                <div> Light Mode </div>
+                <label class="switch">
+                    <input type="checkbox" onchange="lightModeFunction()"/>
+                    <span class="slider round"></span>
+                </label>
+            </div>
+            <div>
+                <button onclick="closeSettingPopUp()" id="settingClose"> Close Window </button>
+            </div>
+        </div>
+    </div>
+    <div class="textGrid">
+        <div class="box" id="box0"></div>
+        <div class="box" id="box1"></div>
+        <div class="box" id="box2"></div>
+        <div class="box" id="box3"></div>
+        <div class="box" id="box4"></div>
+        <div class="box" id="box5"></div>
+        <div class="box" id="box6"></div>
+        <div class="box" id="box7"></div>
+        <div class="box" id="box8"></div>
+        <div class="box" id="box9"></div>
+        <div class="box" id="box10"></div>
+        <div class="box" id="box11"></div>
+        <div class="box" id="box12"></div>
+        <div class="box" id="box13"></div>
+        <div class="box" id="box14"></div>
+        <div class="box" id="box15"></div>
+        <div class="box" id="box16"></div>
+        <div class="box" id="box17"></div>
+        <div class="box" id="box18"></div>
+        <div class="box" id="box19"></div>
+        <div class="box" id="box20"></div>
+        <div class="box" id="box21"></div>
+        <div class="box" id="box22"></div>
+        <div class="box" id="box23"></div>
+        <div class="box" id="box24"></div>
+        <div class="box" id="box25"></div>
+        <div class="box" id="box26"></div>
+        <div class="box" id="box27"></div>
+        <div class="box" id="box28"></div>
+        <div class="box" id="box29"></div>
+    </div>
+
+    <div class="keyboard">
+        <div class="keyboardRow1">
+            <button onclick="keyboard(this.innerText)" class="button" id="q">Q</button>
+            <button onclick="keyboard(this.innerText)" class="button" id="w">W</button>
+            <button onclick="keyboard(this.innerText)" class="button" id="e">E</button>
+            <button onclick="keyboard(this.innerText)" class="button" id="r">R</button>
+            <button onclick="keyboard(this.innerText)" class="button" id="t">T</button>
+            <button onclick="keyboard(this.innerText)" class="button" id="y">Y</button>
+            <button onclick="keyboard(this.innerText)" class="button" id="u">U</button>
+            <button onclick="keyboard(this.innerText)" class="button" id="i">I</button>
+            <button onclick="keyboard(this.innerText)" class="button" id="o">O</button>
+            <button onclick="keyboard(this.innerText)" class="button" id="p">P</button>
+        </div>
+        <div class="keyboardRow2">
+            <button onclick="keyboard(this.innerText)" class="button" id="a">A</button>
+            <button onclick="keyboard(this.innerText)" class="button" id="s">S</button>
+            <button onclick="keyboard(this.innerText)" class="button" id="d">D</button>
+            <button onclick="keyboard(this.innerText)" class="button" id="f">F</button>
+            <button onclick="keyboard(this.innerText)" class="button" id="g">G</button>
+            <button onclick="keyboard(this.innerText)" class="button" id="h">H</button>
+            <button onclick="keyboard(this.innerText)" class="button" id="j">J</button>
+            <button onclick="keyboard(this.innerText)" class="button" id="k">K</button>
+            <button onclick="keyboard(this.innerText)" class="button" id="l">L</button>
+        </div>
+        <div class="keyboardRow3">
+            <button onclick="keyboard(this.innerText)" class="button" id="enterButton">Enter</button>
+            <button onclick="keyboard(this.innerText)" class="button" id="z">Z</button>
+            <button onclick="keyboard(this.innerText)" class="button" id="x">X</button>
+            <button onclick="keyboard(this.innerText)" class="button" id="c">C</button>
+            <button onclick="keyboard(this.innerText)" class="button" id="v">V</button>
+            <button onclick="keyboard(this.innerText)" class="button" id="b">B</button>
+            <button onclick="keyboard(this.innerText)" class="button" id="n">N</button>
+            <button onclick="keyboard(this.innerText)" class="button" id="m">M</button>
+            <button onclick="keyboard(this.innerText)" class="button" id="backSpaceButton">BackSpace</button>
+        </div>
+    </div>
+
+    <div class="restart">
+        <buton onclick="playAgain()" id="restartButton">Restart</buton>
+    </div>
+</body>
+</html>
+<script src="NotWordle.js"></script>
